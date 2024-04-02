@@ -1,0 +1,12 @@
+{% extends 'base/main.html' %}
+{% load static %}
+    {% block 'title' %}
+        <title>{{ user.username }}</title>
+    {% endblock %}
+
+
+{% block 'body' %}
+<video autoplay loop muted class="videomain" src="{% static 'video/bg.mp4'%}"></video>
+    <div> welcome to the Car center we have the best new cars in her </div>
+    
+{% endblock %}

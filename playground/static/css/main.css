@@ -1,0 +1,8 @@
+
+.videomain{
+    position: fixed;
+    height: 100%;
+    transform: scale(1.2);
+    width: 100%;
+    z-index: -1;
+}

@@ -1,0 +1,37 @@
+{% extends 'base/main.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block 'title'%}
+<title>Welcome  Home {{user.username}}</title>
+{% endblock %}
+{% block 'body' %}
+<main>
+    Welcome Home {{user.username}}
+    <section class="py-5 container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Car Center</h1>
+                <p class="lead text-muted">you can see the car list below its amazing right?</p>
+                <a class="btn btn-primary my-2" href="{% url 'list' %}">List Yor Car</a>
+            </div>
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <form action="" method="get">
+                    {{listing_filter.form|crispy}}
+                    <button class="btn btn-sm btn-danger" type="submit">submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                {% for listing in listing_filter.qs %}
+                <div class="col">
+                    {% include "components/listing_car.html"%}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
