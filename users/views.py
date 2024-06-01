@@ -33,7 +33,7 @@ def login_view(request):
     return render(request, 'views/login.html', {'login_form': login_form})
 
 
-# the home path not avalible when you not login 
+# the home path not avalible when you not login
 @login_required
 def logout_view(requset):
     logout(requset)
@@ -57,11 +57,11 @@ class RegisterView(View):
         else:
             messages.error(request, f'unable to register')
             return render(request, 'views/register.html',{'register_form':register_form})
-        
 
 
 
-# the Profile page in this case you can edit your profile info 
+
+# the Profile page in this case you can edit your profile info
 @method_decorator(login_required, name='dispatch')
 
 class ProfileView(View):
@@ -77,7 +77,7 @@ class ProfileView(View):
                                                       'location_form':location_form
                                                       ,'user_listing':user_listing,
                                                       'user_liked_Listing':user_liked_Listing})
-    
+
     def post(self, request):
         user_listing = Listing.objects.filter(seller=request.user.profile)
         user_forms = UserForm(request.POST, instance=request.user)
